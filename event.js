@@ -29,7 +29,7 @@ function kever(t){
     return t
 }
 
-function felbukkan(i,j,o,td,t,d){
+function felbukkan(i,j,o,t,d){
     clearInterval(idozito)
     t[indexhely(i,j,o)] = 0
     let ujindex 
@@ -67,7 +67,7 @@ function megjelenit(t,s,o,d){
             td.innerText=t[indexhely(i,j,o)]
             if (td.innerText=="X") {
                 td.addEventListener("click",function(){
-                    felbukkan(i,j,o,this,t,d)
+                    felbukkan(i,j,o,t,d)
                 })
             }
             tr.appendChild(td)
