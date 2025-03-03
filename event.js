@@ -1,4 +1,4 @@
-var idozito
+var idozito, stopper
 var sor, oszlop
 
 function indexhely(i,j,o){
@@ -39,6 +39,7 @@ function felbukkan(i,j,o,td,t,d){
     t[ujindex] = "X"
     megjelenit(t,sor,oszlop,d)
     idomero(t,sor,oszlop,d)
+    stopperStart()
 }
 
 function idomero(t,s,o,d){
@@ -53,6 +54,7 @@ function idomero(t,s,o,d){
         } while (ujindex === "X");
         t[ujindex] = "X"
         megjelenit(t,s,o,d)
+        stopperStart()
     },10000)
 }
 
@@ -74,6 +76,20 @@ function megjelenit(t,s,o,d){
     }
 }
 
+function stopperStart(){
+    clearInterval(stopper)
+    let idomutat = document.querySelector("#ido")
+    let ido = 10
+    idomutat.innerText = ido
+    stopper = setInterval(function(){
+        ido--
+        idomutat.innerText = ido
+        if (ido <= 0) {
+            clearInterval(stopper)
+        }
+    },1000)
+}
+
 
 function csinal(){
     sor = parseInt(document.querySelector("#sor").value)
@@ -84,4 +100,5 @@ function csinal(){
 
     megjelenit(tabla,sor,oszlop,doboz)
     idomero(tabla,sor,oszlop,doboz)
+    stopperStart()
 }
